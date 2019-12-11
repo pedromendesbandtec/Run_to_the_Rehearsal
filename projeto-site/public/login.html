@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./favicon.JPG" />
+    <script src="funcoes.js"></script>
+</head>
+
+<body>
+    <div class="div_login">
+        <center>
+            <form id="form_login" method="post" onsubmit="return entrar()">
+                <img class="imagem_login" src="./logo_rttr.jpg" alt="Logo Run to the Rehearsal">
+                <br>
+                <input type="text" name="login" id="email" placeholder="E-mail" autofocus>
+                <br> <br>
+                <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
+                <br> <br>
+                <button id="">Entrar</button>
+                <br> <br>
+                <a href="./criar_conta.html">Criar conta</a>
+            </form>
+        </center>
+        <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;"></div>
+    </div>
+    <br>
+</body>
+
+</html>
+<script>
+
+    function entrar() {
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_login));
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    sessionStorage.login_usuario_meuapp = json.login;
+                    sessionStorage.nome_usuario_meuapp = json.nome;
+
+                    window.location.href = 'calendario.html';
+                });
+            } else {
+                console.log('Erro de login!');
+                alert(`Num foi`)
+                response.text().then(texto => {
+                    console.error(texto);
+                    finalizar_aguardar(texto);
+                });
+            }
+        });
+        return false;
+    }
+    function aguardar() {
+        div_erro.style.display = 'none';
+    }
+    function finalizar_aguardar(resposta) {
+        div_erro.style.display = 'block';
+        div_erro.innerHTML = resposta;
+    }
+    // function ir_calendario() {
+    //     var  valor_email = email.value;
+    //     var  valor_senha = senha.value;
+
+    //     if (!valor_email.endsWith('bandtec.com.br') || valor_email.indexOf("@") < 1) {
+    //         alert (`E-mail inválido!`);
+    //     } 
+    //     if (valor_senha.length < 5) {
+    //         alert (`Senha inválida!`)
+    //     }
+    //     if (valor_email.endsWith('bandtec.com.br') && valor_email.indexOf("@") == 1 && valor_senha.length >4) {
+    //         location.href = "./calendario.html";
+    //     }
+    // }
+</script>

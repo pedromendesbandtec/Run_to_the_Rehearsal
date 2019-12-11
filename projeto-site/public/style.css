@@ -1,0 +1,97 @@
+body {
+    background: black;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+h2 {
+    color: white;
+}
+h3 {
+    color: white;
+}
+.imagem_criar_conta {
+    width: 150px;
+}
+.imagem_login {
+    width: 550px;
+}
+.imagem_logo_criar_conta {
+    width: 300px;
+}
+input {
+ 
+    border: none;
+    border-bottom: 1px solid white;
+    background: transparent;
+    border-radius: 4px;
+    color: white;
+    width: 30vw;
+    font-size: 20px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+button:hover {
+    background-color: #555555;
+    color: white;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+#div_autenticacao {
+    color: red;
+}
+input {
+    outline: none;
+}
+header {
+    height: 10vh;
+    width: 100%;
+}
+.imagem_inst {
+    float: left;
+    margin-left: 28vw;
+    height: 10vh;
+    width: 40%;
+}
+.imagem_logo_login {
+    float: right;
+    height: 10vh;
+    width: 13%;
+}
+.texto1_run {
+    font-size: 150%;
+    color: white;
+    float: left;
+    margin-left: 3%;
+    width: 50vw;
+}
+.imagem1_institucional {
+    float: right;
+    height: 10vh;
+    margin-right: 5%;
+}
+.texto2_run {
+    font-size: 150%;
+    color: white;
+    float: right;
+    width: 50vw;
+}
+.imagem2_institucional {
+    float: left;
+    margin-left: 10%;
+}

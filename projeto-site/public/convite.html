@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enviar convite!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./favicon.JPG"/>
+</head>
+<body>
+    <center>
+        <img class="imagem_logo_criar_conta" src="./logo_rttr.jpg" alt="Logo Run to the Rehearsal">
+        <h3>Digite o número dos seus amigos para enviar o convite!</h3>
+        <input type="text" id="convite_celular1" placeholder="Digite o Número" autofocus required>
+        <br> <br>
+        <input type="text" id="convite_celular2" placeholder="Digite o Número">
+        <br> <br>
+        <input type="text" id="convite_celular3" placeholder="Digite o Número">
+        <br> <br>
+        <input type="text" id="convite_celular4" placeholder="Digite o Número">
+        <br> <br>
+        <input type="text" id="convite_celular5" placeholder="Digite o Número">
+        <br> <br>
+        <input type="text" id="convite_celular6" placeholder="Digite o Número">
+        <br> <br>
+        <input type="text" id="convite_celular7" placeholder="Digite o Número">
+        <br> <br>
+        <button onclick="convite_avancar_notificacao()" type="submit">Confirmar</button>
+    </center>
+</body>
+</html>
+<script>
+    function convite_avancar_notificacao() {
+        var valor_convite1 = convite_celular1.value;
+        var valor_convite2 = convite_celular2.value;
+        var valor_convite3 = convite_celular3.value;
+        var valor_convite4 = convite_celular4.value;
+        var valor_convite5 = convite_celular5.value;
+        var valor_convite6 = convite_celular6.value;
+        var valor_convite7 = convite_celular7.value;
+
+        if (valor_convite1.length > 8 || valor_convite2.length > 8 || valor_convite3.length > 8 || valor_convite4.length > 8 || valor_convite5.length > 8 || valor_convite6.length > 8 || valor_convite7.length > 8) {
+            location.href = "./notificacao.html";
+        } else {
+            alert (`Digite um contato válido!`);
+        }
+    }
+</script>

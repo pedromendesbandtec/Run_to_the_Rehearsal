@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Run to the Rehearsal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./favicon.JPG"/>
+    <script src="./funcoes.js"></script>
+</head>
+<body>
+    <center> 
+        <img class="imagem_logo_criar_conta" src="./logo_rttr.jpg" alt="Logo Run to the Rehearsal">
+        <h3>Marque um dia para reunir sua banda!</h3>
+        <br><br>
+        <input type="date" id="calendario">
+        <br><br><br>
+        <button onclick="calendario_confirmar()">Confirmar</button>
+    </center>
+</body>
+</html>
+<script>
+    verificar_autenticacao();
+    function calendario_confirmar() {
+        var valor_calendario = calendario.value;
+        
+        if(valor_calendario.length == 0){
+            alert('Escolha uma data!');
+        } else{
+            location.href = "./convite.html";
+        }
+    }
+</script>

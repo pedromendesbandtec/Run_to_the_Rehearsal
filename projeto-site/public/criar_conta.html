@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Criar conta</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./favicon.JPG" />
+    <script src="funcoes.js"></script>
+</head>
+
+<body>
+
+
+    <center>
+        <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+            <img class="imagem_logo_criar_conta" src="./logo_rttr.jpg" alt="Logo Run to the Rehearsal">
+            <br>
+            <img class="imagem_criar_conta" src="./criar_conta.jpg" alt="Imagem Criar Conta">
+            <br>
+            <input type="text" name="nome_usuario" id="criar_nome" placeholder="Digite seu nome" autofocus>
+            <br> <br>
+            <input type="text" name="email_usuario" id="criar_email" placeholder="Digite seu e-mail">
+            <br> <br>
+            <input type="text" name="telefone_usuario" id="criar_celular" placeholder="Digite seu número de celular">
+            <br> <br>
+            <!--Colocar uma mascara p celular-->
+            <input type="password" name="senha" id="criar_senha" placeholder="Digite sua senha">
+            <br> <br>
+            <input type="password" id="criar_repetir_senha" placeholder="Confirme sua senha">
+            <br> <br>
+            <button id='btn_entrar'>Criar conta</button>
+        </form>
+    </center>
+     <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
+        Erro no cadastro
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    function cadastrar() {
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+
+            if (response.ok) {
+                window.location.href = 'login.html';
+            } else {
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    div_erro.innerHTML = resposta;
+                });
+                finalizar_aguardar();
+            }
+        });
+        return false;
+    }
+    function aguardar() {
+        btn_entrar.disabled = true;
+
+        div_erro.style.display = 'none';
+    }
+    function finalizar_aguardar() {
+        btn_entrar.disabled = false;
+
+        div_erro.style.display = 'block';
+    }
+
+    // function criar_voltar_login() {
+    //     var valor_nome = criar_nome.value;
+    //     var valor_email = criar_email.value;
+    //     var valor_celular = criar_celular.value;
+    //     var valor_senha = criar_senha.value;
+    //     var valor_rep_senha = criar_repetir_senha.value;
+
+    //     if (valor_nome.length < 1) {
+    //         alert (`Digite um nome existente!`);
+    //     }
+    //     if (!valor_email.endsWith('bandtec.com.br') || valor_email.indexOf("@") < 1) {
+    //         alert (`Digite um email válido!`);
+    //     }
+    //     if (valor_celular.length < 9) {
+    //         alert (`Digite um número válido!`);
+    //     }
+    //     if (valor_senha.length < 5) {
+    //         alert (`Senha inválida!`);
+    //     }
+    //     if (valor_senha != valor_rep_senha) {
+    //         alert (`As senhas não são iguais!`);
+    //     }
+    //     if (valor_nome.length > 0 && valor_email.endsWith('bandtec.com.br') && valor_email.indexOf("@") == 1 && valor_celular.length > 8 && valor_senha.length > 4 && valor_senha == valor_rep_senha) {
+    //         alert (`Cadastro realizado com sucesso!`);
+    //         location.href = "./login.html";
+    //     }
+    // }
+</script>
